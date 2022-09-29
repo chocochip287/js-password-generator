@@ -32,6 +32,7 @@ var uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var numbers = "0123456789";
 var charSet = "";
 
+
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
@@ -39,6 +40,7 @@ function writePassword() {
   
   // generates password accounting for the user's prompt choices
   function generatePassword() {
+    password = "";
     // if all prompts are true
     if (pwLowercase && pwUppercase && pwNumeric && pwSpecial) {
       charSet = Array.from(lowercase + uppercase + numbers + specCharacters);
@@ -46,9 +48,9 @@ function writePassword() {
         var random = Math.floor(Math.random() * charSet.length);
         password += charSet[random];
       }
-    }
+    } console.log(password);
   }
-
+  
   passwordText.value = password;
 
 }
@@ -73,7 +75,7 @@ function lowercasePrompt() {
 }
 // prompts the user to choose whether or not to allow uppercase characters
 function uppercasePrompt() {
-  pwLowercase = confirm("Inlcude lowercase characters in your password? OK = yes, Cancel = no.");
+  pwUppercase = confirm("Inlcude uppercase characters in your password? OK = yes, Cancel = no.");
   numPrompt();
 }
 // prompts the user to choose whether or not to allow numbers
