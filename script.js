@@ -145,7 +145,7 @@ function generatePassword() {
     }
   } // if ya broke it
   else {
-    alert("You cannot create a blank password. Please try again and select OK for at least one of the following: lowercase letters, uppercase letters, numbers, or special characters. Alternatively, the dev forgot something.")
+    alert("You cannot create a blank password. Please try again and select OK for at least one of the following: lowercase letters, uppercase letters, numbers, or special characters.")
   }
   passwordText.value = password;
 }
