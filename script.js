@@ -26,6 +26,7 @@ var pwLowercase = true;
 var pwUppercase = true;
 var pwNumeric = true;
 var pwSpecial = true;
+var specCharacters = ["!", "@", "_", "+", "-", "?"];
 
 // Write password to the #password input
 function writePassword() {
@@ -39,7 +40,6 @@ function writePassword() {
 }
 
 // Add event listener to generate button to establish password criteria then generate a password
-
 generateBtn.addEventListener("click", lengthPrompt);
 
 // Password criteria prompts
