@@ -88,6 +88,13 @@ function generatePassword() {
       var random = Math.floor(Math.random() * charSet.length);
       password += charSet[random];
     }
+  } // if lowercase letters, numbers, and special characters are allowed
+  else if (pwLowercase && !pwUppercase && pwNumeric && pwSpecial) {
+    charSet = Array.from(lowercase + numbers + specCharacters);
+    for (i=0; i <= pwLength; i++) {
+      var random = Math.floor(Math.random() * charSet.length);
+      password += charSet[random];
+    }
   } // if lowercase and uppercase letters are allowed
   else if (pwLowercase && pwUppercase && !pwNumeric && !pwSpecial) {
     charSet = Array.from(lowercase + uppercase);
