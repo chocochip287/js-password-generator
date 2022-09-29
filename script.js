@@ -34,25 +34,19 @@ var charSet = "";
 
 
 // Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
-  
-  // generates password accounting for the user's prompt choices
-  function generatePassword() {
-    password = "";
-    // if all prompts are true
-    if (pwLowercase && pwUppercase && pwNumeric && pwSpecial) {
-      charSet = Array.from(lowercase + uppercase + numbers + specCharacters);
-      for (i=0; i <= pwLength; i++) {
-        var random = Math.floor(Math.random() * charSet.length);
-        password += charSet[random];
-      }
-    } console.log(password);
-  }
-  
-  passwordText.value = password;
 
+function generatePassword() {
+  password = "";
+  var passwordText = document.querySelector("#password");
+  // if all prompts are true
+  if (pwLowercase && pwUppercase && pwNumeric && pwSpecial) {
+    charSet = Array.from(lowercase + uppercase + numbers + specCharacters);
+    for (i=0; i <= pwLength; i++) {
+      var random = Math.floor(Math.random() * charSet.length);
+      password += charSet[random];
+    }
+  }
+  passwordText.value = password;
 }
 
 // Add event listener to generate button to establish password criteria then generate a password
@@ -86,5 +80,33 @@ function numPrompt() {
 // prompts the user to choose whether or not to allow special characters
 function specPrompt() {
   pwSpecial = confirm("Inlcude special characters in your password? OK = yes, Cancel = no.");
-  writePassword();
+  //writePassword();
+  generatePassword();
 }
+
+/*
+Initially the assignment has generatePassword() inside of writePassword(). I had issues passing the generated
+password into the textarea in the HTML file so I removed the outer function. I want to come back and experiment with
+this to figure out how to make it work with the layered functions.
+
+function writePassword() {
+  var password = generatePassword();
+  var passwordText = document.querySelector("#password");
+  
+  // generates password accounting for the user's prompt choices
+  function generatePassword() {
+    //password = "";
+    // if all prompts are true
+    if (pwLowercase && pwUppercase && pwNumeric && pwSpecial) {
+      charSet = Array.from(lowercase + uppercase + numbers + specCharacters);
+      for (i=0; i <= pwLength; i++) {
+        var random = Math.floor(Math.random() * charSet.length);
+        password += charSet[random];
+      }
+    } console.log(password);
+  }
+  
+  passwordText.value = password;
+
+}
+*/
