@@ -38,21 +38,21 @@ var charSet = "";
 function generatePassword() {
   password = "";
   var passwordText = document.querySelector("#password");
-  // if all eligible characters are allowed
+  // if all eligible characters are allowed 
   if (pwLowercase && pwUppercase && pwNumeric && pwSpecial) {
     charSet = Array.from(lowercase + uppercase + numbers + specCharacters);
     for (i=0; i <= pwLength; i++) {
       var random = Math.floor(Math.random() * charSet.length);
       password += charSet[random];
     }
-  } // if no lowercase characters are allowed
+  } // if uppercase letters, numbers, and special characters are allowed
   else if (!pwLowercase && pwUppercase && pwNumeric && pwSpecial) {
     charSet = Array.from(uppercase + numbers + specCharacters);
     for (i=0; i <= pwLength; i++) {
       var random = Math.floor(Math.random() * charSet.length);
       password += charSet[random];
     }
-  } // if lowercase and uppercase letters are not allowed
+  } // if numbers and special characters are allowed
   else if (!pwLowercase && !pwUppercase && pwNumeric && pwSpecial) {
     charSet = Array.from(numbers + specCharacters);
     for (i=0; i <= pwLength; i++) {
@@ -66,23 +66,54 @@ function generatePassword() {
       var random = Math.floor(Math.random() * charSet.length);
       password += charSet[random];
     }
-  } // if lowercase letters and special characters are allowed
+  } // if only lowercase letters are allowed
+  else if (pwLowercase && !pwUppercase && !pwNumeric && !pwSpecial) {
+    charSet = Array.from(lowercase);
+    for (i=0; i <= pwLength; i++) {
+      var random = Math.floor(Math.random() * charSet.length);
+      password += charSet[random];
+    }
+  } // if only uppercase letters are allowed
+  else if (!pwLowercase && pwUppercase && !pwNumeric && !pwSpecial) {
+    charSet = Array.from(uppercase);
+    for (i=0; i <= pwLength; i++) {
+      var random = Math.floor(Math.random() * charSet.length);
+      password += charSet[random];
+    }
+  } // if only numbers are allowed
+  else if (!pwLowercase && !pwUppercase && pwNumeric && !pwSpecial) {
+    charSet = Array.from(numbers);
+    for (i=0; i <= pwLength; i++) {
+      var random = Math.floor(Math.random() * charSet.length);
+      password += charSet[random];
+    }
+  }
+  // if lowercase letters and special characters are allowed
   else if (pwLowercase && !pwUppercase && !pwNumeric && pwSpecial) {
     charSet = Array.from(lowercase + specCharacters);
     for (i=0; i <= pwLength; i++) {
       var random = Math.floor(Math.random() * charSet.length);
       password += charSet[random];
     }
-  } // if numbers are not allowed
+  } // if lowercase letters, uppercase letters, and special characters are allowed
   else if (pwLowercase && pwUppercase && !pwNumeric && pwSpecial) {
     charSet = Array.from(lowercase + uppercase + specCharacters);
     for (i=0; i <= pwLength; i++) {
       var random = Math.floor(Math.random() * charSet.length);
       password += charSet[random];
     }
-
-    passwordText.value = password;
+  } // if lowercase and uppercase letters are allowed
+  else if (pwLowercase && pwUppercase && !pwNumeric && !pwSpecial) {
+    charSet = Array.from(lowercase + uppercase);
+    for (i=0; i <= pwLength; i++) {
+      var random = Math.floor(Math.random() * charSet.length);
+      password += charSet[random];
+    }
+  } // if ya broke it
+  else {
+    alert("You cannot create a blank password. Please try again and select OK for at least one of the following: lowercase letters, uppercase letters, numbers, or special characters. Alternatively, the dev forgot something.")
   }
+  passwordText.value = password;
 }
 
 // Add event listener to generate button to establish password criteria then generate a password
