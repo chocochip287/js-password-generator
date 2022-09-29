@@ -33,7 +33,9 @@ function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
-  
+  function generatePassword() {
+    
+  }
 
   passwordText.value = password;
 
