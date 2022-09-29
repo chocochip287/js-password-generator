@@ -26,15 +26,27 @@ var pwLowercase = true;
 var pwUppercase = true;
 var pwNumeric = true;
 var pwSpecial = true;
-var specCharacters = ["!", "@", "_", "+", "-", "?"];
+var specCharacters = "!@_+-?";
+var lowercase = "abcdefghijklmnopqrstuvwxyz";
+var uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+var numbers = "0123456789";
+var charSet = "";
 
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
-
+  
+  // generates password accounting for the user's prompt choices
   function generatePassword() {
-    
+    // if all prompts are true
+    if (pwLowercase && pwUppercase && pwNumeric && pwSpecial) {
+      charSet = Array.from(lowercase + uppercase + numbers + specCharacters);
+      for (i=0; i <= pwLength; i++) {
+        var random = Math.floor(Math.random() * charSet.length);
+        password += charSet[random];
+      }
+    }
   }
 
   passwordText.value = password;
