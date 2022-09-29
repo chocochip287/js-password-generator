@@ -5,4 +5,4 @@ This page contains a secure password generator that creates secure passwords for
 The homepage can be viewed [here](https://chocochip287.github.io/js-password-generator/).
 
 ## Screenshot
-![Homepage screenshot](.assets/images/homepage screenshot.png)
+![Homepage screenshot](./assets/images/homepage screenshot.png)
