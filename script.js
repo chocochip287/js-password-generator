@@ -26,7 +26,7 @@ var pwLowercase = true;
 var pwUppercase = true;
 var pwNumeric = true;
 var pwSpecial = true;
-var specCharacters = "!@_+-?";
+var specCharacters = "!@_+-?"; // this is deliberately not the entire OWASP list of special characters
 var lowercase = "abcdefghijklmnopqrstuvwxyz";
 var uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var numbers = "0123456789";
@@ -87,8 +87,7 @@ function generatePassword() {
       var random = Math.floor(Math.random() * charSet.length);
       password += charSet[random];
     }
-  }
-  // if lowercase letters and special characters are allowed
+  } // if lowercase letters and special characters are allowed
   else if (pwLowercase && !pwUppercase && !pwNumeric && pwSpecial) {
     charSet = Array.from(lowercase + specCharacters);
     for (i=0; i <= pwLength; i++) {
@@ -105,6 +104,41 @@ function generatePassword() {
   } // if lowercase and uppercase letters are allowed
   else if (pwLowercase && pwUppercase && !pwNumeric && !pwSpecial) {
     charSet = Array.from(lowercase + uppercase);
+    for (i=0; i <= pwLength; i++) {
+      var random = Math.floor(Math.random() * charSet.length);
+      password += charSet[random];
+    }
+  } // if lowercase and uppercase letters and numbers are allowed
+  else if (pwLowercase && pwUppercase && pwNumeric && !pwSpecial) {
+    charSet = Array.from(lowercase + uppercase + numbers);
+    for (i=0; i <= pwLength; i++) {
+      var random = Math.floor(Math.random() * charSet.length);
+      password += charSet[random];
+    }
+  } // if lowercase letters and numbers are allowed
+  else if (pwLowercase && !pwUppercase && pwNumeric && !pwSpecial) {
+    charSet = Array.from(lowercase + numbers);
+    for (i=0; i <= pwLength; i++) {
+      var random = Math.floor(Math.random() * charSet.length);
+      password += charSet[random];
+    }
+  } // if uppercase letters and numbers are allowed
+  else if (!pwLowercase && pwUppercase && pwNumeric && !pwSpecial) {
+    charSet = Array.from(uppercase + numbers);
+    for (i=0; i <= pwLength; i++) {
+      var random = Math.floor(Math.random() * charSet.length);
+      password += charSet[random];
+    }
+  } // if uppercase letters, numbers, and special characters are allowed
+  else if (!pwLowercase && pwUppercase && pwNumeric && pwSpecial) {
+    charSet = Array.from(uppercase + numbers + specCharacters);
+    for (i=0; i <= pwLength; i++) {
+      var random = Math.floor(Math.random() * charSet.length);
+      password += charSet[random];
+    }
+  } // if uppercase letters and special characters are allowed
+  else if (!pwLowercase && pwUppercase && !pwNumeric && pwSpecial) {
+    charSet = Array.from(uppercase + specCharacters);
     for (i=0; i <= pwLength; i++) {
       var random = Math.floor(Math.random() * charSet.length);
       password += charSet[random];
