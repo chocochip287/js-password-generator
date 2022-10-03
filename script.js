@@ -152,7 +152,7 @@ generateBtn.addEventListener("click", lengthPrompt);
 // prompts the user to enter a value to determine password length
 function lengthPrompt() {
   pwLength = prompt("Please enter a number between 8 and 128 to determine your password's length.", "[enter your number here]");
-  while (pwLength > 128 || pwLength < 8 || isNaN(password)) {
+  while (pwLength > 128 || pwLength < 8 || isNaN(pwLength)) {
     pwLength = prompt("You must enter a number between 8 and 128.", "[please enter a valid number]");
   }
   lowercasePrompt();
